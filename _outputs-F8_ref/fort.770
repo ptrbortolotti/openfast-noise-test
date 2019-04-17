@@ -1,0 +1,8 @@
+Total Grid points In Y (lateral), Starts from - radius goes to + radius+
+           36  GridY          - Echo flag
+Total Grid points In Z (vertical), Starts from bottom tip (hub-radius)
+           67  GridZ          - Echo flag
+Grid spacing  In Y (lateral)
+   4.0000E+00  InputFileData% - Echo flag
+Grid spacing In Z (vertical)
+   2.0000E+00  InputFileData% - Echo flag
