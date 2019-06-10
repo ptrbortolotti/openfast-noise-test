@@ -3,8 +3,8 @@ Row for Turbine Name and characteristics.
 ======  General Options  ============================================================================
 False         Echo               - Echo the input to "<rootname>.AD.ech"?  (flag)
 "default"     DTAero             - Time interval for aerodynamic calculations {or "default"} (s)
-1   -  Comp_AA_After- Parameter determining to run AeroAcoustics module after the X-th time step (not time in seconds, simulation time step)
-20   -  saveeach - Parameter determining to run AeroAcoustics module every X-th time step (not time in seconds, simulation time step)
+1    Comp_AA_After- Parameter determining to run AeroAcoustics module after the X-th time step (not time in seconds, simulation time step)
+20  saveeach - Parameter determining to run AeroAcoustics module every X-th time step (not time in seconds, simulation time step)
 0   IBLUNT           - FLAG TO COMPUTE BLUNTNESS NOISE  (  = 0 Off, =1 On  ) 
 0   ILAM               - FLAG TO COMPUTE LBL NOISE(switch)  (  = 0 Off, =1 On  ) 
 0   ITIP                - FLAG TO COMPUTE TIP NOISE (  = 0 Off, =1 On  ) 

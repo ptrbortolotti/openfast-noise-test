@@ -17,6 +17,7 @@ _outputs-F8:
 	mkdir  _outputs-F8
 
 test: _outputs-OF2
+	@rm -f *.txt
 	@rm -f  _outputs-OF2/*
 	./openfast$(EXEEXT) Test18_OF2.fst
 	mv 5MW_Baseline/AAOutput* _outputs-OF2
@@ -27,6 +28,7 @@ test: _outputs-OF2
 	mv *.bin                  _outputs-OF2/
 
 testf8: _outputs-F8
+	@rm -f *.txt
 	@rm -f  _outputs-F8/*
 	./fast8$(EXEEXT) Test18_F8.fst
 	mv 5MW_Baseline/AAOutput* _outputs-F8/
