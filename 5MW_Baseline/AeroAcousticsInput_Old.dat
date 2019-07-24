@@ -1,0 +1,42 @@
+------- AeroAcoustics Module v1.00.* INPUT FILE ------------------------------------------------
+Row for Turbine Name and characteristics.
+======  General Options  ============================================================================
+False         Echo               - Echo the input to "<rootname>.AD.ech"?  (flag)
+"default"     DTAero             - Time interval for aerodynamic calculations {or "default"} (s)
+1    Comp_AA_After- Parameter determining to run AeroAcoustics module after the X-th time step (not time in seconds, simulation time step)
+20  saveeach - Parameter determining to run AeroAcoustics module every X-th time step (not time in seconds, simulation time step)
+0   IBLUNT           - FLAG TO COMPUTE BLUNTNESS NOISE  (  = 0 Off, =1 On  ) 
+0   ILAM               - FLAG TO COMPUTE LBL NOISE(switch)  (  = 0 Off, =1 On  ) 
+0   ITIP                - FLAG TO COMPUTE TIP NOISE (  = 0 Off, =1 On  ) 
+0   ITRIP              - Boudary layer trip no trip = 0 , heavy trip = 1 (BPM only), light trip = 2, reads in tripped xfoil bl if ITRIP>0 and  XfoilCall=1 and X_BLMethod=2
+1   ITURB             - Integerr describing TBL noise calculation = 0 none =1 BPM = 2 TNO  
+3   IInflow            - Integerr describing TI noise calculation = 0 none =1 Amiet (flat plate) = 2 Guidati = 3 Simplified Guidati
+2   X_BLMethod   - Integerr describing calculation method for boundary layer properties,  = 1 BPM = 2 Xfoil      
+1    XfoilCall   - Integer describing Xfoil calls,  = 1 Interpolate from pretabulated = 2 Call Xfoil for each node etc (this flag used only if X_BLMethod=2 or IInflow=2)
+1    TICalcMeth   - Integer describing the Method for TI Calculation 1=  TI value interpolation from a given table 2=Turbulence intensity calculation automatically on the fly 
+True          ROUND            - LOGICAL INDICATING ROUNDED TIP
+1.0       	ALPRAT             TIP LIFT CURVE SLOPE and(Default = 1.0)      
+80  - AA_Bl_Prcntge The calculations will be carried out for the nodes that are within the user input percntage value. i.e. AA_Bl_Prcntge=60 means;Starting from tip 60% percent of the blade will be contributing to the overall noise levels.
+0.5  - Surface Roughness value [m] ! this is only used if InflowNoise method is not calculated on the fly
+0    - A-weighting Flag (  = 0 Off, =1 On  ) 
+======  Observer Input  ===================================================================
+1    NrObsLoc - Total Number of  observer locations
+"AA_ObserverLocations.dat"    ObserverLocations        - Name of file containing all observer locations X Y Z (-)
+======  Blade Properties  =====================================================================
+"AABlade1.dat"    AABlFile(1)        - Name of file containing distributed aerodynamic properties for Blade #1 (-)
+"AABlade1.dat"    AABlFile(2)        - Name of file containing distributed aerodynamic properties for Blade #2 (-)
+"AABlade1.dat"    AABlFile(3)        - Name of file containing distributed aerodynamic properties for Blade #3 (-)
+======  Outputs  ====================================================================================
+2   - Number of Output files. 0 for no output 1 for Time Dependent Overall SPL, 2 for both 1 and Frequency and Time Dependent SPL as well or 3 for both 1 and 2 and Acoustics mechanism dependent 
+"AAOutputFile"    AAOutFile - No Extension needed the resulting file will have .out Name of file containing
+0   -  (  = 0 Off, =1 On  ) Outputs Large .bin file for all receivers,all noise mechanisms,each time step,all frequency
+END of input file (the word "END" must appear in the first 3 columns of this last OutList line)
+---------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+

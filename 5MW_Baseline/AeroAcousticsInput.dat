@@ -1,24 +1,27 @@
 ------- AeroAcoustics Module v1.00.* INPUT FILE ------------------------------------------------
 Row for Turbine Name and characteristics.
 ======  General Options  ============================================================================
-False         Echo               - Echo the input to "<rootname>.AD.ech"?  (flag)
-"default"     DTAero             - Time interval for aerodynamic calculations {or "default"} (s)
-1    Comp_AA_After- Parameter determining to run AeroAcoustics module after the X-th time step (not time in seconds, simulation time step)
-20  saveeach - Parameter determining to run AeroAcoustics module every X-th time step (not time in seconds, simulation time step)
-0   IBLUNT           - FLAG TO COMPUTE BLUNTNESS NOISE  (  = 0 Off, =1 On  ) 
-0   ILAM               - FLAG TO COMPUTE LBL NOISE(switch)  (  = 0 Off, =1 On  ) 
-0   ITIP                - FLAG TO COMPUTE TIP NOISE (  = 0 Off, =1 On  ) 
-0   ITRIP              - Boudary layer trip no trip = 0 , heavy trip = 1 (BPM only), light trip = 2, reads in tripped xfoil bl if ITRIP>0 and  XfoilCall=1 and X_BLMethod=2
-1   ITURB             - Integerr describing TBL noise calculation = 0 none =1 BPM = 2 TNO  
-3   IInflow            - Integerr describing TI noise calculation = 0 none =1 Amiet (flat plate) = 2 Guidati = 3 Simplified Guidati
-2   X_BLMethod   - Integerr describing calculation method for boundary layer properties,  = 1 BPM = 2 Xfoil      
-1    XfoilCall   - Integer describing Xfoil calls,  = 1 Interpolate from pretabulated = 2 Call Xfoil for each node etc (this flag used only if X_BLMethod=2 or IInflow=2)
-1    TICalcMeth   - Integer describing the Method for TI Calculation 1=  TI value interpolation from a given table 2=Turbulence intensity calculation automatically on the fly 
-True          ROUND            - LOGICAL INDICATING ROUNDED TIP
-1.0       	ALPRAT             TIP LIFT CURVE SLOPE and(Default = 1.0)      
-80  - AA_Bl_Prcntge The calculations will be carried out for the nodes that are within the user input percntage value. i.e. AA_Bl_Prcntge=60 means;Starting from tip 60% percent of the blade will be contributing to the overall noise levels.
-0.5  - Surface Roughness value [m] ! this is only used if InflowNoise method is not calculated on the fly
-0    - A-weighting Flag (  = 0 Off, =1 On  ) 
+False        Echo                                 - Echo the input to "<rootname>.AD.ech"?  (flag)
+"default"    DTAero                               - Time interval for aerodynamic calculations (s)  (or "default")
+1            AAStart      RN                      - Time step after witch the AeroAcoustics module is run (integer) TODO Unpractical, may need to be changed
+20           SaveEach                             - Time step interval to run AeroAcoustics module (integer)        TODO Unpractical, may need to be changed
+0            BluntMod     RN                      - Bluntness model {0:none, 1: TODO XXXX}  (switch)
+0            LamMod       RN                      - Lbl noise model {0:none, 1: TODO XXXX}  (switch)
+0            TipMod       RN                      - Tip noise model {0:none, 1: TODO XXXX}  (switch)
+0            TripMod      RN                      - Boudary layer trip model {0:no trip , 1: heavy trip (BPM only), 2: light trip, reads in tripped xfoil BL if TripMod>0 and XfoilCall=0 and X_BLMethod=2} (switch)  TODO option 2 not clear
+1            TurbMod      RN                      - TBL noise calculation {0: none, 1:BPM, 2: TNO} (switch)
+3            InflowMod    RN                      - TI noise calculation  {0: none, 1:Amiet (flat plate), 2: Guidati,  3:Simplified Guidati} (switch) 
+2            BLMod        RN                      - Calculation method for boundary layer properties,  {1: BPM, 2: Xfoil} (switch)
+0            XfoilCall    CHANGED_ID_MEANING!!!   - Xfoil calls {0: Use data from tabulated files, 1: Generate data with Xfoil and interpolate, 1: Call Xfoil for each time step and blade section [used only if X_BLMethod=2 or InflowMod=2]} (switch)
+0            NReListBL    NEW                     - Number of Reynolds number in list ReListBL [used only if X_BLMethod=2 and XfoilCall=1]
+0.5,1,5,10   ReListBL     NEW                     - Reynolds numbers, in million, used when calling Xfoil to tabulate the boundary layer properties [used only if X_BLMethod=2 and XfoilCall=1]
+-5,40,181    AlphaLinsp   NEW                     - Linspace (min,max,n) of angle of attacks used when calling Xfoil to tabulate the boundary layer properties [used only if X_BLMethod=2 and XfoilCall=1]
+1            TICalcMeth                           - Method for Turbulence Intensity Calculation {1:TI value interpolation from a given table, 2:TI computed on the fly} (switch)
+True         Round                                - Logical indicating rounded tip (flag)
+1.0          Alprat                               - Tip lift curve slope (Default = 1.0)      
+80           BldPrcnt                             - Percentage of the blade span, starting from the tip, that will contribute to the overall noise levels. (float)
+0.5          SurfRoughness                        - Surface Roughness value (m) [only used if InflowNoise method is not calculated on the fly]
+False        AWeighting  CHANGED_TO_BOOL          - A-weighting Flag (flag)  
 ======  Observer Input  ===================================================================
 1    NrObsLoc - Total Number of  observer locations
 "AA_ObserverLocations.dat"    ObserverLocations        - Name of file containing all observer locations X Y Z (-)
