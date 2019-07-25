@@ -8,14 +8,14 @@ False        Echo                                 - Echo the input to "<rootname
 0            BluntMod     RN                      - Bluntness model {0:none, 1: TODO XXXX}  (switch)
 0            LamMod       RN                      - Lbl noise model {0:none, 1: TODO XXXX}  (switch)
 0            TipMod       RN                      - Tip noise model {0:none, 1: TODO XXXX}  (switch)
-0            TripMod      RN                      - Boudary layer trip model {0:no trip , 1: heavy trip (BPM only), 2: light trip, reads in tripped xfoil BL if TripMod>0 and XfoilCall=0 and X_BLMethod=2} (switch)  TODO option 2 not clear
+0            TripMod      RN                      - Boudary layer trip model {0:no trip , 1: heavy trip (BPM only), 2: light trip, reads in tripped xfoil BL if TripMod>0 and XfoilCall=0 and BLMod=2} (switch)  TODO option 2 not clear
 1            TurbMod      RN                      - TBL noise calculation {0: none, 1:BPM, 2: TNO} (switch)
 3            InflowMod    RN                      - TI noise calculation  {0: none, 1:Amiet (flat plate), 2: Guidati,  3:Simplified Guidati} (switch) 
 2            BLMod        RN                      - Calculation method for boundary layer properties,  {1: BPM, 2: Xfoil} (switch)
-0            XfoilCall    CHANGED_ID_MEANING!!!   - Xfoil calls {0: Use data from tabulated files, 1: Generate data with Xfoil and interpolate, 1: Call Xfoil for each time step and blade section [used only if X_BLMethod=2 or InflowMod=2]} (switch)
-0            NReListBL    NEW                     - Number of Reynolds number in list ReListBL [used only if X_BLMethod=2 and XfoilCall=1]
-0.5,1,5,10   ReListBL     NEW                     - Reynolds numbers, in million, used when calling Xfoil to tabulate the boundary layer properties [used only if X_BLMethod=2 and XfoilCall=1]
--5,40,181    AlphaLinsp   NEW                     - Linspace (min,max,n) of angle of attacks used when calling Xfoil to tabulate the boundary layer properties [used only if X_BLMethod=2 and XfoilCall=1]
+1            XfoilCall    CHANGED_ID_MEANING!!!   - Xfoil calls {0: Use data from tabulated files, 1: Generate data with Xfoil and interpolate, 1: Call Xfoil for each time step and blade section [used only if BLMod=2 or InflowMod=2]} (switch)
+4            NReListBL    NEW                     - Number of Reynolds number in list ReListBL [used only if BLMod=2 and XfoilCall=1]
+0.5,1,5,10   ReListBL     NEW                     - Reynolds numbers, in million, used when calling Xfoil to tabulate the boundary layer properties [used only if BLMod=2 and XfoilCall=1]
+-5,40,181    AlphaLinsp   NEW                     - Linspace (min,max,n) of angle of attacks used when calling Xfoil to tabulate the boundary layer properties [used only if BLMod=2 and XfoilCall=1]
 1            TICalcMeth                           - Method for Turbulence Intensity Calculation {1:TI value interpolation from a given table, 2:TI computed on the fly} (switch)
 True         Round                                - Logical indicating rounded tip (flag)
 1.0          Alprat                               - Tip lift curve slope (Default = 1.0)      
@@ -30,9 +30,10 @@ False        AWeighting  CHANGED_TO_BOOL          - A-weighting Flag (flag)
 "AABlade1.dat"    AABlFile(2)        - Name of file containing distributed aerodynamic properties for Blade #2 (-)
 "AABlade1.dat"    AABlFile(3)        - Name of file containing distributed aerodynamic properties for Blade #3 (-)
 ======  Outputs  ====================================================================================
-2   - Number of Output files. 0 for no output 1 for Time Dependent Overall SPL, 2 for both 1 and Frequency and Time Dependent SPL as well or 3 for both 1 and 2 and Acoustics mechanism dependent 
-"AAOutputFile"    AAOutFile - No Extension needed the resulting file will have .out Name of file containing
-0   -  (  = 0 Off, =1 On  ) Outputs Large .bin file for all receivers,all noise mechanisms,each time step,all frequency
+2                 NAAOutFile                        - Number of Output files. 0 for no output 1 for Time Dependent Overall SPL, 2 for both 1 and Frequency and Time Dependent SPL as well or 3 for both 1 and 2 and Acoustics mechanism dependent 
+"AAOutputFile"    AAOutFile                         - No Extension needed the resulting file will have .out Name of file containing
+False             AALargeOut    CHANGED_TO_BOOL     - Outputs Large .bin file for all receivers,all noise mechanisms,each time step,all frequency
+True             XfoilTabOut   NEW                 - Output the tabulated data from Xfoil with one file per airfoil [only if XfoiCall is 0 or 1] (flag)
 END of input file (the word "END" must appear in the first 3 columns of this last OutList line)
 ---------------------------------------------------------------------------------------
 
