@@ -5,22 +5,22 @@ False        Echo         - Echo the input to "<rootname>.AD.ech"?  (flag)
 "default"    DTAero       - Time interval for aerodynamic calculations (s)  (or "default")
 1            AAStart      - Time step after witch the AeroAcoustics module is run (integer) TODO Unpractical, may need to be changed
 20           SaveEach     - Time step interval to run AeroAcoustics module (integer)        TODO Unpractical, may need to be changed
-0            BluntMod     - Bluntness model {0:none, 1: TODO XXXX}  (switch)
-0            LamMod       - Lbl noise model {0:none, 1: TODO XXXX}  (switch)
-0            TipMod       - Tip noise model {0:none, 1: TODO XXXX}  (switch)
-0            TripMod      - Boudary layer trip model {0:no trip , 1: heavy trip (BPM only), 2: light trip, reads in tripped xfoil BL if TripMod>0 and XfoilCall=0 and BLMod=2} (switch)  TODO option 2 not clear
-1            TurbMod      - TBL noise calculation {0: none, 1:BPM, 2: TNO} (switch)
-3            InflowMod    - TI noise calculation  {0: none, 1:Amiet (flat plate), 2: Guidati,  3:Simplified Guidati} (switch) 
+0            BluntMod     - Bluntness model {0:none, 1: BPM}  (switch)
+0            LamMod       - Laminar boundary layer noise model {0:none, 1: BPM}  (switch)
+0            TipMod       - Tip noise model {0:none, 1: BPM}  (switch)
+0            TripMod      - Boundary layer trip model {0:no trip, 1: heavy trip (BPM only), 2: light trip, reads in tripped xfoil BL if TripMod>0 and XfoilCall=0 and BLMod=2} (switch)  
+1            TBLTEMod     - Turbulent Boundary Layer-Trailing Edge noise calculation {0: none, 1:BPM, 2: TNO} (switch)
+3            TIMod        - Turbulent Inflow noise model  {0: none, 1:Amiet (flat plate), 2: Guidati (not supported),  3:Simplified Guidati} (switch) 
 2            BLMod        - Calculation method for boundary layer properties,  {1: BPM, 2: Xfoil} (switch)
-0            XfoilCall    - Xfoil calls {0: Use data from tabulated files, 1: Generate data with Xfoil and interpolate, 1: Call Xfoil for each time step and blade section [used only if BLMod=2 or InflowMod=2]} (switch)
-4            NReListBL    - Number of Reynolds number in list ReListBL [used only if BLMod=2 and XfoilCall=1]
-0.5,1,5,10   ReListBL     - Reynolds numbers, in million, used when calling Xfoil to tabulate the boundary layer properties [used only if BLMod=2 and XfoilCall=1]
--5,40,181    AlphaLinsp   - Linspace (min,max,n) of angle of attacks used when calling Xfoil to tabulate the boundary layer properties [used only if BLMod=2 and XfoilCall=1]
-1            TICalcMeth   - Method for Turbulence Intensity Calculation {1:TI value interpolation from a given table, 2:TI computed on the fly} (switch)
-True         Round        - Logical indicating rounded tip (flag)
+0            XfoilCall    - Xfoil calls {0: Use data from tabulated files, 1: Generate data with Xfoil and interpolate, 2: Call Xfoil for each time step and blade section [used only if BLMod=2 or InflowMod=2]} (switch)
+1            NReListBL    - Number of Reynolds number in list ReListBL [used only if BLMod=2 and XfoilCall=1]
+5            ReListBL     - Reynolds numbers, in million, used when calling Xfoil to tabulate the boundary layer properties [used only if BLMod=2 and XfoilCall=1]
+-5,40,20     AlphaLinsp   - Linspace (min,max,n) of angle of attacks used when calling Xfoil to tabulate the boundary layer properties [used only if BLMod=2 and XfoilCall=1]
+1            TICalcMeth   - Method to estimate Turbulence Intensity {1:TI value interpolated from a given table, 2:TI computed on the fly} (switch)
+True         RoundedTip   - Logical indicating rounded tip (flag)
 1.0          Alprat       - Tip lift curve slope (Default = 1.0)      
 80           BldPrcnt     - Percentage of the blade span, starting from the tip, that will contribute to the overall noise levels. (float)
-0.5          SurfRoughness- Surface Roughness value (m) [only used if InflowNoise method is not calculated on the fly]
+0.5          SurfRoughness- Surface Roughness value (m) [only used if TICalcMeth=1]
 False        AWeighting   - A-weighting Flag (flag)  
 ======  Observer Input  ===================================================================
 1    NrObsLoc - Total Number of  observer locations
@@ -33,7 +33,7 @@ False        AWeighting   - A-weighting Flag (flag)
 2                 NAAOutFile  - Number of Output files. 0 for no output 1 for Time Dependent Overall SPL, 2 for both 1 and Frequency and Time Dependent SPL as well or 3 for both 1 and 2 and Acoustics mechanism dependent 
 "AAOutputFile"    AAOutFile   - No Extension needed the resulting file will have .out Name of file containing
 False             AALargeOut  - Outputs Large .bin file for all receivers,all noise mechanisms,each time step,all frequency
-True             XfoilTabOut  - Output the tabulated data from Xfoil with one file per airfoil [only if XfoiCall is 0 or 1] (flag)
+False             XfoilTabOut - Output the tabulated data from Xfoil with one file per airfoil [only if XfoiCall is 0 or 1] (flag)
 END of input file (the word "END" must appear in the first 3 columns of this last OutList line)
 ---------------------------------------------------------------------------------------
 
