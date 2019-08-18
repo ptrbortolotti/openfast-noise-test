@@ -13,9 +13,9 @@ False        Echo         - Echo the input to "<rootname>.AD.ech"?  (flag)
 3            TIMod        - Turbulent Inflow noise model  {0: none, 1:Amiet (flat plate), 2: Guidati (not supported),  3:Simplified Guidati} (switch) 
 2            BLMod        - Calculation method for boundary layer properties,  {1: BPM, 2: Xfoil} (switch)
 0            XfoilCall    - Xfoil calls {0: Use data from tabulated files, 1: Generate data with Xfoil and interpolate, 2: Call Xfoil for each time step and blade section [used only if BLMod=2 or InflowMod=2]} (switch)
-1            NReListBL    - Number of Reynolds number in list ReListBL [used only if BLMod=2 and XfoilCall=1]
-5            ReListBL     - Reynolds numbers, in million, used when calling Xfoil to tabulate the boundary layer properties [used only if BLMod=2 and XfoilCall=1]
--5,40,20     AlphaLinsp   - Linspace (min,max,n) of angle of attacks used when calling Xfoil to tabulate the boundary layer properties [used only if BLMod=2 and XfoilCall=1]
+4            NReListBL    - Number of Reynolds number in list ReListBL [used only if BLMod=2 and XfoilCall=1]
+0.5,1,5,10   ReListBL     - Reynolds numbers, in million, used when calling Xfoil to tabulate the boundary layer properties [used only if BLMod=2 and XfoilCall=1]
+-5,20,20     AlphaLinsp   - Linspace (min,max,n) of angle of attacks used when calling Xfoil to tabulate the boundary layer properties [used only if BLMod=2 and XfoilCall=1]
 1            TICalcMeth   - Method to estimate Turbulence Intensity {1:TI value interpolated from a given table, 2:TI computed on the fly} (switch)
 True         RoundedTip   - Logical indicating rounded tip (flag)
 1.0          Alprat       - Tip lift curve slope (Default = 1.0)      
@@ -33,6 +33,7 @@ False        AWeighting   - A-weighting Flag (flag)
 2                 NAAOutFile  - Number of Output files. 0 for no output 1 for Time Dependent Overall SPL, 2 for both 1 and Frequency and Time Dependent SPL as well or 3 for both 1 and 2 and Acoustics mechanism dependent 
 "AAOutputFile"    AAOutFile   - No Extension needed the resulting file will have .out Name of file containing
 False             AALargeOut  - Outputs Large .bin file for all receivers,all noise mechanisms,each time step,all frequency
+False             XfoilTabOut - Output the tabulated data from Xfoil with one file per airfoil [only if XfoiCall is 0 or 1] (flag)
 False             XfoilTabOut - Output the tabulated data from Xfoil with one file per airfoil [only if XfoiCall is 0 or 1] (flag)
 END of input file (the word "END" must appear in the first 3 columns of this last OutList line)
 ---------------------------------------------------------------------------------------
