@@ -11,11 +11,7 @@ False        Echo         - Echo the input to "<rootname>.AD.ech"?  (flag)
 0            TripMod      - Boundary layer trip model {0:no trip, 1: heavy trip (BPM only), 2: light trip, reads in tripped xfoil BL if TripMod>0 and XfoilCall=0 and BLMod=2} (switch)  
 1            TBLTEMod     - Turbulent Boundary Layer-Trailing Edge noise calculation {0: none, 1:BPM, 2: TNO} (switch)
 3            TIMod        - Turbulent Inflow noise model  {0: none, 1:Amiet (flat plate), 2: Guidati (not supported),  3:Simplified Guidati} (switch) 
-2            BLMod        - Calculation method for boundary layer properties,  {1: BPM, 2: Xfoil} (switch)
-0            XfoilCall    - Xfoil calls {0: Use data from tabulated files, 1: Generate data with Xfoil and interpolate, 2: Call Xfoil for each time step and blade section [used only if BLMod=2 or InflowMod=2]} (switch)
-4            NReListBL    - Number of Reynolds number in list ReListBL [used only if BLMod=2 and XfoilCall=1]
-0.5,1,5,10   ReListBL     - Reynolds numbers, in million, used when calling Xfoil to tabulate the boundary layer properties [used only if BLMod=2 and XfoilCall=1]
--5,20,20     AlphaLinsp   - Linspace (min,max,n) of angle of attacks used when calling Xfoil to tabulate the boundary layer properties [used only if BLMod=2 and XfoilCall=1]
+2            BLMod        - Calculation method for boundary layer properties,  {1: BPM, 2: Pretabulated} (switch)
 1            TICalcMeth   - Method to estimate Turbulence Intensity {1:TI value interpolated from a given table, 2:TI computed on the fly} (switch)
 True         RoundedTip   - Logical indicating rounded tip (flag)
 1.0          Alprat       - Tip lift curve slope (Default = 1.0)      

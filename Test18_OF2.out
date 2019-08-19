@@ -1,5 +1,5 @@
 
-Predictions were generated on 18-Aug-2019 at 17:39:23 using OpenFAST, compiled as a 64-bit application using double precision at commit v2.0.0-190-gd1d08506-dirty
+Predictions were generated on 18-Aug-2019 at 19:03:10 using OpenFAST, compiled as a 64-bit application using double precision at commit v2.0.0-191-gbf9e9c2c
  linked with  NWTC Subroutine Library; ElastoDyn; InflowWind; AeroDyn
 
 Description from the FAST input file: FAST Certification Test #18: NREL 5.0 MW Baseline Wind Turbine (Onshore)
