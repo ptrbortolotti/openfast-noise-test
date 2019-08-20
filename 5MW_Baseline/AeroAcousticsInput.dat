@@ -15,7 +15,7 @@ False        Echo         - Echo the input to "<rootname>.AD.ech"?  (flag)
 1            TICalcMeth   - Method to estimate Turbulence Intensity {1:TI value interpolated from a given table, 2:TI computed on the fly} (switch)
 True         RoundedTip   - Logical indicating rounded tip (flag)
 1.0          Alprat       - Tip lift curve slope (Default = 1.0)      
-80           BldPrcnt     - Percentage of the blade span, starting from the tip, that will contribute to the overall noise levels. (float)
+70           BldPrcnt     - Percentage of the blade span, starting from the tip, that will contribute to the overall noise levels. (float)
 0.5          SurfRoughness- Surface Roughness value (m) [only used if TICalcMeth=1]
 False        AWeighting   - A-weighting Flag (flag)  
 ======  Observer Input  ===================================================================
@@ -26,11 +26,8 @@ False        AWeighting   - A-weighting Flag (flag)
 "AABlade1.dat"    AABlFile(2)   - Name of file containing distributed aerodynamic properties for Blade #2 (-)
 "AABlade1.dat"    AABlFile(3)   - Name of file containing distributed aerodynamic properties for Blade #3 (-)
 ======  Outputs  ====================================================================================
-2                 NAAOutFile  - Number of Output files. 0 for no output 1 for Time Dependent Overall SPL, 2 for both 1 and Frequency and Time Dependent SPL as well or 3 for both 1 and 2 and Acoustics mechanism dependent 
+3                 NAAOutFile  - Number of Output files. 0 for no output 1 for Time Dependent Overall SPL, 2 for both 1 and Frequency and Time Dependent SPL as well or 3 for both 1 and 2 and Acoustics mechanism dependent 
 "AAOutputFile"    AAOutFile   - No Extension needed the resulting file will have .out Name of file containing
-False             AALargeOut  - Outputs Large .bin file for all receivers,all noise mechanisms,each time step,all frequency
-False             XfoilTabOut - Output the tabulated data from Xfoil with one file per airfoil [only if XfoiCall is 0 or 1] (flag)
-False             XfoilTabOut - Output the tabulated data from Xfoil with one file per airfoil [only if XfoiCall is 0 or 1] (flag)
 END of input file (the word "END" must appear in the first 3 columns of this last OutList line)
 ---------------------------------------------------------------------------------------
 
